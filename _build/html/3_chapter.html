@@ -1,0 +1,830 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Data from eBay &#8212; eBay&#39;s API Data Pipeline</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Getting Started with eBay’s APIs" href="2_chapter.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/steps.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">eBay's API Data Pipeline</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_chapter.html">
+   <strong>
+    eBay’s API Data Pipeline
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_chapter.html">
+   <strong>
+    Getting Started with eBay’s APIs
+   </strong>
+   <a class="anchor" id="chapter2">
+   </a>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <strong>
+    Getting Data from eBay
+   </strong>
+   <a class="anchor" id="chapter3">
+   </a>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/3_chapter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F3_chapter.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/3_chapter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-the-ebay-data-pipeline-a-class-anchor-id-section-3-1-a">
+   <strong>
+    Introduction to the eBay Data Pipeline
+   </strong>
+   <a class="anchor" id="section_3_1">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flask-app-a-class-anchor-id-section-3-2-1-a">
+     <strong>
+      Flask App
+     </strong>
+     <a class="anchor" id="section_3_2_1">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#navigating-through-the-code-a-class-anchor-id-section-3-2-a">
+   <strong>
+    Navigating through the Code
+   </strong>
+   <a class="anchor" id="section_3_2">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slurm-file-a-class-anchor-id-section-3-3-a">
+   <strong>
+    Slurm File
+   </strong>
+   <a class="anchor" id="section_3_3">
+   </a>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Getting Data from eBay  <a class="anchor" id="chapter3"></a></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-the-ebay-data-pipeline-a-class-anchor-id-section-3-1-a">
+   <strong>
+    Introduction to the eBay Data Pipeline
+   </strong>
+   <a class="anchor" id="section_3_1">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flask-app-a-class-anchor-id-section-3-2-1-a">
+     <strong>
+      Flask App
+     </strong>
+     <a class="anchor" id="section_3_2_1">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#navigating-through-the-code-a-class-anchor-id-section-3-2-a">
+   <strong>
+    Navigating through the Code
+   </strong>
+   <a class="anchor" id="section_3_2">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slurm-file-a-class-anchor-id-section-3-3-a">
+   <strong>
+    Slurm File
+   </strong>
+   <a class="anchor" id="section_3_3">
+   </a>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="getting-data-from-ebay-a-class-anchor-id-chapter3-a">
+<h1><strong>Getting Data from eBay</strong>  <a class="anchor" id="chapter3"></a><a class="headerlink" href="#getting-data-from-ebay-a-class-anchor-id-chapter3-a" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-the-ebay-data-pipeline-a-class-anchor-id-section-3-1-a">
+<h2><strong>Introduction to the eBay Data Pipeline</strong> <a class="anchor" id="section_3_1"></a><a class="headerlink" href="#introduction-to-the-ebay-data-pipeline-a-class-anchor-id-section-3-1-a" title="Permalink to this headline">¶</a></h2>
+<p>In this chapter, we will provide a detailed overview of the implementation of a data pipeline. This process begins by collecting keys from eBay’s Developer Program, and ends in a cleaned data frame that is connected to a SQLite database.  Figure 3 provides a holistic overview of our data pipeline process. Orange elements within the inner rectangle are applied to each category in our predefined <code>categories_list</code>. The looping structure of the flowchart represents the automated nature of this entire process, which runs once every 24 hours. We start by loading in the developer keys provided by eBay and connecting to their API system. These keys are unique to each user and should be stored in a hidden .env file as a prerequisite of the loading process. The .env file resides in the same directory as our main code files. It is important to not share your keys with anyone!</p>
+<p>Once we gain access to eBay’s API system, we define the <code>geteBay</code> function. This function intakes a category number as an input, and subsequently connects to and makes GET request calls to the Finding API. This function must be defined before the iterative process described below can be completed.</p>
+<p>Once the  <code>geteBay</code> function  has been defined, we iteratively loop over each of the categories in <code>categories_list</code>, and each element is passed through the <code>geteBay</code> function. The <code>geteBay</code> function contains loops that extracts each of the desired features and cleans the associated data for each listing. The cleaned data is then stored in a new data frame.</p>
+<p>After the cleaned data frame is generated, we extract the <code>Item_ID</code> for each listing and use the resulting list as an input parameter to our second API connection with the Shopping API. The subsequent GET request calls allows us to mine further features of interest for each of the listings:</p>
+<ul class="simple">
+<li><p><code>category_id</code></p></li>
+<li><p><code>item_specs</code></p></li>
+<li><p><code>item_idlist</code></p></li>
+<li><p><code>seller_id</code></p></li>
+<li><p><code>Item_sku</code></p></li>
+<li><p><code>image_url</code></p></li>
+</ul>
+<p>Next, we merge the processed data from the Finding and Shopping APIs into a single data frame called <code>item_specs</code>.</p>
+<p>We then connect to our SQL database, ebay.db, and listings in the newly merged <code>item_specs</code> data frame are appended to the item_specs table. Once the new data has successfully been appended to the database table, all changes are saved and the connection to the database is closed. This process then repeats the following day at 12.05am.</p>
+<p><em>figure 3.</em></p>
+<img src="2_flowchart.jpg" width=1000 height=1200 />
+<p><strong>Caption:</strong> This flowchart represents the overall automated data collection process that we built. The inner box indicates a comprehensive process to collect for each category. Then, the data is concatenated and the collection process is automated each 24 hours</p>
+<div class="section" id="flask-app-a-class-anchor-id-section-3-2-1-a">
+<h3><strong>Flask App</strong> <a class="anchor" id="section_3_2_1"></a><a class="headerlink" href="#flask-app-a-class-anchor-id-section-3-2-1-a" title="Permalink to this headline">¶</a></h3>
+<p><strong>Building a Simple App</strong></p>
+<p>Getting access to eBay’s developer’s program requires users to build their own application. This requirement is a result of eBay’s marketplace account <a href="https://developer.ebay.com/marketplace-account-deletion"> deletion notification update </a>. The resulting application provides eBay with a communication channel to notify developers of marketplace deletion notifications. The architecture the application requires is relatively simple – it needs to receive eBay challenge code and respond with an output that hashes together the challenge code, the user’s eBay verification token, and the application’s endpoint. A 200 response should be produced in an output field in JSON format. An application that meets these requirements can be constructed in python using the flask package.</p>
+<p>It should be reiterated that creating an application that can successfully receive challenge code is essential to accessing eBay’s production data. Production data consists of real listings from live marketplaces. Users can also develop test code to interact with eBay’s API system through their Sandbox environment.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>The Flask application must be able to manage Hyper Text Transfer Protocol Secure (HTTPS) requests. HTTPS is the secure version of HTTP, the protocol over which data is sent between two applications. The method we used to get an https connection was through <a class="reference external" href="http://letsencrypt.com">letsencrypt.com</a>, which is a third-party website that provides a certificate to most hosted websites. The user needs to purchase a domain name in order to obtain an SSL certificate. Domains can be purchased through godaddy, Google domains, or other websites. There is no restriction on extensions. For example, we used a .club extension due to its low set up cost. After securing an SSL hosted domain for the application, login to eBay’s developer’s program and apply for Production Keys. Once Production Keys are obtained, you are ready to start building your data pipeline.</p>
+<p>For help on troubleshooting setting up a Flask app, look into UVA IT and various online resources including  <a href="https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-20-04">this tutorial</a>. The flask package also has documentation that can be accessed at <a href="https://flask.palletsprojects.com/en/2.0.x/">this link</a>.</p>
+</div>
+</div>
+<div class="section" id="navigating-through-the-code-a-class-anchor-id-section-3-2-a">
+<h2><strong>Navigating through the Code</strong> <a class="anchor" id="section_3_2"></a><a class="headerlink" href="#navigating-through-the-code-a-class-anchor-id-section-3-2-a" title="Permalink to this headline">¶</a></h2>
+<p>This section is meant to provide a general overview of the code in our main data mining and processing script. To help reinforce user understanding, we have included images of code blocks, which we reference throughout this tutorial.</p>
+<p>As with any python script, we will begin by importing the necessary packages and loading the API keys into our environment. Notice that <code>categories_of_interest</code> is imported from another .py file, <code>CategoryList_Input</code>. This file resides in the same directory as our main .py file, and provides a method for our sponsors to freely modify categories of interest without interfacing with the main script. We will directly reference where some specific packages are used in the script. After loading in our account-specific keys, an initial connection is made to the eBay API system. This establishes a general connection to eBay’s APIs. When accessing specific APIs to extract features of interest, we will have to establish other connections.</p>
+<p>We also define a datetime object to collect data from a timeframe of interest. For our project, we want to collect data from the last 24 hours, so the datetime function sets a timeframe for the previous day.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">dotenv</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span> <span class="nn">xmltodict</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span> 
+
+<span class="c1">#import categories list, make sure file is in same directory</span>
+<span class="kn">from</span> <span class="nn">CategoryList_Input</span> <span class="kn">import</span> <span class="n">categories_of_interest</span>
+
+<span class="c1">#set up API</span>
+<span class="n">dotenv</span><span class="o">.</span><span class="n">load_dotenv</span><span class="p">(</span><span class="s1">&#39;keys.env&#39;</span><span class="p">)</span>
+
+<span class="n">AppID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;AppID&#39;</span><span class="p">)</span>
+<span class="n">DevID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DevID&#39;</span><span class="p">)</span>
+<span class="n">CertID</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;CertID&#39;</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">AppID</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span><span class="n">CertID</span>
+<span class="n">encoded</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">))</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://api.ebay.com/identity/v1/oauth2/token&#39;</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;Basic &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">encoded</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)),</span>
+          <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">}</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;grant_type&#39;</span><span class="p">:</span><span class="s1">&#39;client_credentials&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;scope&#39;</span><span class="p">:</span> <span class="s1">&#39;https://api.ebay.com/oauth/api_scope&#39;</span><span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="n">r</span>
+</pre></div>
+</div>
+<p>The architecture of our extraction and processing pipeline is encapsulated in a try block. We implement a try-except block in case the pipeline runs into any errors. At the end of this script, we discuss what the except blocks we implement catch. The try block runs the code, and execution only jumps to the except block if there are any errors.</p>
+<p>We collect the corresponding data through a function we defined as <code>geteBay</code>. This function uses the Finding API to collect our initial set of features discussed in chapter 2. The automated nature of our data collection also stems from this section as we collect data from the past day of listings. The <code>geteBay</code> function parses through a list of predefined categories. This function also takes a <code>starttime</code> parameter that specifies the earliest time to collect listings from.</p>
+<p>The url and headers objects are used to authenticate the connection to the Finding API and its <code>findItemsByCategory</code> function. We also initialize <code>categorydf</code> dataframe that will append data to <code>item</code>. Next, we create a <code>params</code> object that defines the output of the API call. This includes the category ID,  entries per page, number of pages, and listing time. Finally, we call the API with the constructed parameters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">try</span><span class="p">:</span>
+
+    <span class="c1">#Functions that collect data</span>
+    <span class="k">def</span> <span class="nf">geteBay</span><span class="p">(</span><span class="n">categoryid</span><span class="p">,</span> <span class="n">starttime</span><span class="p">):</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://svcs.ebay.com/services/search/FindingService/v1&#39;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X-EBAY-SOA-SECURITY-APPNAME&#39;</span><span class="p">:</span> <span class="n">AppID</span><span class="p">,</span>
+                   <span class="s1">&#39;X-EBAY-SOA-OPERATION-NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;findItemsByCategory&#39;</span><span class="p">}</span>
+
+        <span class="n">categorydf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;categoryId&#39;</span><span class="p">:</span> <span class="n">categoryid</span><span class="p">,</span>
+                     <span class="s1">&#39;RESPONSE-DATA-FORMAT&#39;</span><span class="p">:</span><span class="s1">&#39;JSON&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;paginationInput.entriesPerPage&#39;</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span> <span class="c1">#100 entries per page</span>
+                     <span class="s1">&#39;paginationInput.pageNumber&#39;</span><span class="p">:</span><span class="n">i</span><span class="p">,</span>
+                     <span class="s1">&#39;findItemsByCategoryRequest.sortOrder&#39;</span><span class="p">:</span><span class="s1">&#39;StartTimeNewest&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;itemFilter(0).name&#39;</span><span class="p">:</span> <span class="s1">&#39;StartTimeFrom&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;itemFilter(0).value&#39;</span><span class="p">:</span> <span class="n">starttime</span><span class="p">}</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>If the call to the API returns empty, the for loop will skip over the page of listings it is currently iterating over without throwing an error. Data collected from the API call is then converted to tabular format and appended to a data frame.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>            <span class="k">if</span> <span class="s1">&#39;item&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)[</span><span class="s1">&#39;findItemsByCategoryResponse&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;searchResult&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]):</span>
+                <span class="k">continue</span> 
+            <span class="n">categorydf</span> <span class="o">=</span> <span class="n">categorydf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)[</span><span class="s1">&#39;findItemsByCategoryResponse&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;searchResult&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;item&#39;</span><span class="p">]))</span>
+
+        <span class="n">categorydf</span> <span class="o">=</span> <span class="n">categorydf</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>The data contained within <code>categorydf</code> is not uniform and still needs to be processed. To tackle this issue, we implement the following algorithmic method for each feature: initialize an empty list, iterate over the length of the dataframe, verify that the feature exists, extract key elements of the uncleaned data, and append processed results to the empty list. Each of the lists will later be combined into a cleaned dataframe. If a row has a missing value, we assign <code>nan</code> to indicate this. This is to ensure that all features have the same number of elements.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>     <span class="n">itemlist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">categorydf</span><span class="p">)):</span> <span class="c1">#loop over range of categorydf</span>
+            <span class="k">if</span> <span class="s1">&#39;itemId&#39;</span> <span class="ow">in</span> <span class="n">categorydf</span><span class="p">:</span>
+                <span class="n">item</span> <span class="o">=</span> <span class="n">categorydf</span><span class="o">.</span><span class="n">itemId</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">item</span> <span class="o">=</span> <span class="s1">&#39;nan&#39;</span>
+            <span class="n">itemlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+        <span class="c1">#title</span>
+        <span class="n">titlelist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">categorydf</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s1">&#39;title&#39;</span> <span class="ow">in</span> <span class="n">categorydf</span><span class="p">:</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="n">categorydf</span><span class="o">.</span><span class="n">title</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span> 
+                <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;nan&#39;</span>
+            <span class="n">titlelist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+        <span class="c1">#viewitemurl</span>
+        <span class="n">urllist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">categorydf</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s1">&#39;viewItemURL&#39;</span> <span class="ow">in</span> <span class="n">categorydf</span><span class="p">:</span>
+                <span class="n">url</span> <span class="o">=</span> <span class="n">categorydf</span><span class="o">.</span><span class="n">viewItemURL</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span> 
+                <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;nan&#39;</span>
+            <span class="n">urllist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="c1">#postalcode</span>
+        <span class="n">postallist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">categorydf</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s1">&#39;postalCode&#39;</span> <span class="ow">in</span> <span class="n">categorydf</span><span class="p">:</span>
+                 <span class="n">code</span> <span class="o">=</span> <span class="n">categorydf</span><span class="o">.</span><span class="n">postalCode</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                 <span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;nan&#39;</span>
+            <span class="n">postallist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+        <span class="n">postal</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">postallist</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+                <span class="n">postal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">postal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span>
+
+
+        <span class="c1">#country</span>
+        <span class="n">countrylist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">categorydf</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s1">&#39;country&#39;</span> <span class="ow">in</span> <span class="n">categorydf</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">categorydf</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1">#print(a)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;nan&#39;</span>
+            <span class="n">countrylist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+        <span class="c1">#priceselling</span>
+        <span class="n">pricelist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">categorydf</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s1">&#39;sellingStatus&#39;</span> <span class="ow">in</span> <span class="n">categorydf</span><span class="p">:</span>
+                <span class="n">price</span> <span class="o">=</span> <span class="n">categorydf</span><span class="o">.</span><span class="n">sellingStatus</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;convertedCurrentPrice&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;__value__&#39;</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">price</span> <span class="o">=</span> <span class="s1">&#39;nan&#39;</span>
+            <span class="n">pricelist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+
+        <span class="c1">#condition</span>
+        <span class="n">conditionlist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">categorydf</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s1">&#39;condition&#39;</span> <span class="ow">in</span> <span class="n">categorydf</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">categorydf</span><span class="p">[</span><span class="s1">&#39;condition&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span> 
+                <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;nan&#39;</span>
+            <span class="n">conditionlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+        <span class="c1">#listingtime</span>
+        <span class="n">listingtime</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">categorydf</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="s1">&#39;listingInfo&#39;</span> <span class="ow">in</span> <span class="n">categorydf</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">categorydf</span><span class="p">[</span><span class="s1">&#39;listingInfo&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;startTime&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;nan&#39;</span>
+            <span class="n">listingtime</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><strong>Note:</strong> Extracting the postal code for each listing presents a special case for the methodology described in the previous paragraph. Specifically, the output of <code>postallist</code> contains a mix of sub lists and placeholders for empty values. Heterogeneous data types are an issue, so we implement an additional processing step – if the data type of the extracted element is a list, we take the first element. This corresponds to the desired postal code value. Otherwise, we replace the placeholder value with “nan” in string format.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="n">postal</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">postallist</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
+                <span class="n">postal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">postal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>After processing all features of interest, we create <code>categorydf_clean</code> data frame from a dictionary of lists. This data frame contains the processed data for each feature. The function outputs the cleaned data frame.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="n">categorydf_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Item_ID&#39;</span><span class="p">:</span> <span class="n">itemlist</span><span class="p">,</span>
+                                         <span class="s1">&#39;Product_Title&#39;</span><span class="p">:</span><span class="n">titlelist</span><span class="p">,</span>
+                                         <span class="s1">&#39;URL_image&#39;</span><span class="p">:</span><span class="n">urllist</span><span class="p">,</span>
+                                         <span class="s1">&#39;Country&#39;</span><span class="p">:</span><span class="n">countrylist</span><span class="p">,</span>
+                                         <span class="s1">&#39;Price_USD&#39;</span><span class="p">:</span><span class="n">pricelist</span><span class="p">,</span>
+                                         <span class="s1">&#39;Postal_Code&#39;</span><span class="p">:</span> <span class="n">postal</span><span class="p">,</span>
+                                         <span class="s1">&#39;Item_Condition&#39;</span><span class="p">:</span>
+                                         <span class="n">conditionlist</span><span class="p">,</span>
+                                         <span class="s1">&#39;Listing_Time&#39;</span><span class="p">:</span><span class="n">listingtime</span><span class="p">})</span>
+
+        <span class="k">return</span> <span class="n">categorydf_clean</span>
+
+</pre></div>
+</div>
+<p>The <a href="https://stackoverflow.com/questions/56494304/how-can-i-do-to-convert-ordereddict-to-dict "> <code>OrderedDict_to_dict()</code> </a>  function is defined to help change the data type for inputs that happened to be an ordered dictionary. Converting an ordered dictionary to a dictionary allows us to parse through data in the same method discussed above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+ <span class="k">def</span> <span class="nf">OrderedDict_to_dict</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span> 
+            <span class="k">return</span> <span class="p">[</span><span class="n">OrderedDict_to_dict</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">arg</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">OrderedDict</span><span class="p">):</span> 
+            <span class="n">arg</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span> 
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">arg</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">arg</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict_to_dict</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">arg</span>
+</pre></div>
+</div>
+<p>This code block changes the directory of the collected data to the location of the database subdirectory and connects to it, using the SQLite library.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;/gpfs/gpfs0/project/sdscap-kropko/sdscap-kropko-network&#39;</span><span class="p">)</span>
+    <span class="n">ebay_db</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;ebay.db&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here we loop through the list of categories. It starts by calling the <code>geteBay</code> function and passing the current category. This will collect the results from the last 24 hours and save them to a dataframe, <code>finding_df</code>.</p>
+<p>We also initialize an empty list and loop through the <code>finding_df</code> to extract the item IDs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+    <span class="n">categories_list</span> <span class="o">=</span> <span class="n">categories_of_interest</span>
+    
+    <span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">categories_list</span><span class="p">:</span>
+        <span class="n">finding_df</span> <span class="o">=</span> <span class="n">geteBay</span><span class="p">(</span><span class="n">cat</span><span class="p">,</span> <span class="n">oneday</span><span class="p">)</span>
+
+        <span class="n">itemlist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">finding_df</span><span class="p">[</span><span class="s1">&#39;Item_ID&#39;</span><span class="p">])):</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="n">finding_df</span><span class="p">[</span><span class="s1">&#39;Item_ID&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">itemlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>We create a <code>new_list</code> that segments elements in the item ID list into groups of 20. Generating a list of lists in this format allows us to maximize the number of possible calls  we can make to the Shopping API - in this case, it’s 5,000 API calls per day.  Next, we set up the parameters to connect to the Shopping API and initialize an empty data frame; this process mirrors connecting to the Finding API.</p>
+<p>In a <code>for loop</code> we iterate through each sublist in  <code>new_list</code> and reduce the sub list’s elements into one string that contains all of the listing IDs. We pass this string to the <code>GetMultipleItems</code> and explicitly state that we want features from the following call-specific output fields: <code>Variations, Details, ItemSpecifics</code>.</p>
+<p>We complete the call to the API and convert XML output into a dictionary, and save it in a data frame.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+        <span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">itemlist</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">20</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">itemlist</span><span class="p">),</span> <span class="mi">20</span><span class="p">)]</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;https://open.api.ebay.com&#39;</span>
+        <span class="n">endpoint</span> <span class="o">=</span> <span class="s1">&#39;/shopping&#39;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X-EBAY-API-IAF-TOKEN&#39;</span><span class="p">:</span> <span class="s1">&#39;Bearer &#39;</span> <span class="o">+</span> <span class="n">OAuth</span><span class="p">,</span>
+                  <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/x-www-form-urlencoded&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Version&#39;</span><span class="p">:</span> <span class="s1">&#39;1199&#39;</span><span class="p">}</span>
+
+        <span class="n">getmultipledf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">eachlist</span> <span class="ow">in</span> <span class="n">new_list</span><span class="p">:</span>
+            <span class="n">string_listingids</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eachlist</span><span class="p">)</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;callname&#39;</span><span class="p">:</span><span class="s1">&#39;GetMultipleItems&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;ItemID&#39;</span><span class="p">:</span> <span class="n">string_listingids</span><span class="p">,</span>
+                    <span class="s1">&#39;IncludeSelector&#39;</span><span class="p">:</span><span class="s1">&#39;Variations,Details,ItemSpecifics&#39;</span><span class="p">}</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">root</span><span class="o">+</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+            <span class="n">xml_format</span> <span class="o">=</span> <span class="n">xmltodict</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="n">getmultipledf</span> <span class="o">=</span><span class="n">getmultipledf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">OrderedDict_to_dict</span><span class="p">(</span><span class="n">xml_format</span><span class="p">)))</span>
+
+</pre></div>
+</div>
+<p>For each iteration, we check to see if <code>GetMultipleItemsResponse.Item</code> is a valid feature in <code>getmultipledf</code>. If the feature does not exist, we skip that iteration and continue the for-loop. Then, we initialize empty lists for features of items collected by the Shopping API. All variables of interest are stored in the single column <code> GetMultipleItemsResponse.Item</code >, so we make a copy of this feature and assign it to <code>convert_list</code>. We then convert any instances of float values in <code>convert_list</code> into lists. This is a necessary processing step because we are going to iterate across the length of convert_list, and len() cannot be applied to objects with a float data type.</p>
+<p>Once every float instance has successfully been converted to a list, <code>convert_list</code> is handed off to another recursive loop that will extract additional item-related features. Each of these values is saved to the corresponding lists:</p>
+<ul class="simple">
+<li><p>item_specs</p></li>
+<li><p>item_idlist</p></li>
+<li><p>seller_id</p></li>
+<li><p>item_sku</p></li>
+<li><p>image_url</p></li>
+<li><p>category_id</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">convert_list</span><span class="p">)):</span> <span class="c1">#loop over length of convert_list</span>
+            
+            <span class="c1">#skip empty elements</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">convert_list</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">==</span> <span class="nb">float</span><span class="p">:</span>
+                <span class="k">continue</span>
+            
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">convert_list</span><span class="p">[</span><span class="n">j</span><span class="p">])):</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">getmultipledf</span><span class="p">[</span><span class="s1">&#39;GetMultipleItemsResponse.Item&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;PrimaryCategoryID&#39;</span><span class="p">]</span> 
+                <span class="n">category_id</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">convert_list</span><span class="p">[</span><span class="n">j</span><span class="p">])):</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">getmultipledf</span><span class="p">[</span><span class="s1">&#39;GetMultipleItemsResponse.Item&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;ItemSpecifics&#39;</span><span class="p">][</span><span class="s1">&#39;NameValueList&#39;</span><span class="p">]</span>
+                <span class="n">item_specs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">convert_list</span><span class="p">[</span><span class="n">j</span><span class="p">])):</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">getmultipledf</span><span class="p">[</span><span class="s1">&#39;GetMultipleItemsResponse.Item&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;ItemID&#39;</span><span class="p">]</span>
+                <span class="n">item_idlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">convert_list</span><span class="p">[</span><span class="n">j</span><span class="p">])):</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">getmultipledf</span><span class="p">[</span><span class="s1">&#39;GetMultipleItemsResponse.Item&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Seller&#39;</span><span class="p">][</span><span class="s1">&#39;UserID&#39;</span><span class="p">]</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">));</span>
+                <span class="n">seller_id</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">())</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">convert_list</span><span class="p">[</span><span class="n">j</span><span class="p">])):</span>
+                <span class="n">a</span>  <span class="o">=</span> <span class="n">getmultipledf</span><span class="p">[</span><span class="s1">&#39;GetMultipleItemsResponse.Item&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SKU&#39;</span><span class="p">)</span>
+                <span class="n">item_sku</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+            <span class="c1">#images </span>
+            <span class="n">all_picture_urls</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">convert_list</span><span class="p">[</span><span class="n">j</span><span class="p">])):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">getmultipledf</span><span class="p">[</span><span class="s1">&#39;GetMultipleItemsResponse.Item&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;PictureURL&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">all_picture_urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getmultipledf</span><span class="p">[</span><span class="s1">&#39;GetMultipleItemsResponse.Item&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;PictureURL&#39;</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">converted_to_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">getmultipledf</span><span class="p">[</span><span class="s1">&#39;GetMultipleItemsResponse.Item&#39;</span><span class="p">][</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;PictureURL&#39;</span><span class="p">]]</span>
+                    <span class="n">all_picture_urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">converted_to_list</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_picture_urls</span><span class="p">)):</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">all_picture_urls</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">image_url</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+                
+</pre></div>
+</div>
+<p>We combine the two cleaned data frames generated from making calls to the Finding and Shopping APIs.  Moreover, we convert the data type of  <code>Item_Condition</code>,<code>Listing_Time</code>, and <code>itemspeclist</code> to strings in order to save these columns and their corresponding values to our SQLite database. SQLite databases cannot handle datetime data types and dictionaries within a specific cell.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="n">shopping_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;itemspeclist&#39;</span><span class="p">:</span> <span class="n">item_specs</span><span class="p">,</span>
+                               <span class="s1">&#39;itemid&#39;</span><span class="p">:</span> <span class="n">item_idlist</span><span class="p">,</span>
+                               <span class="s1">&#39;sellerid&#39;</span><span class="p">:</span><span class="n">seller_id</span><span class="p">,</span>
+                              <span class="s1">&#39;sku&#39;</span><span class="p">:</span><span class="n">item_sku</span><span class="p">,</span>
+                              <span class="s1">&#39;image_url&#39;</span><span class="p">:</span><span class="n">image_url</span><span class="p">,</span>
+                                   <span class="s1">&#39;categoryid&#39;</span><span class="p">:</span> <span class="n">category_id</span><span class="p">})</span>
+
+        <span class="n">item_specs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;ItemID&#39;</span><span class="p">:</span><span class="n">finding_df</span><span class="p">[</span><span class="s1">&#39;Item_ID&#39;</span><span class="p">],</span>
+                                  <span class="s1">&#39;Product_Title&#39;</span><span class="p">:</span><span class="n">finding_df</span><span class="p">[</span><span class="s1">&#39;Product_Title&#39;</span><span class="p">],</span>
+                                  <span class="s1">&#39;CategoryID&#39;</span><span class="p">:</span><span class="n">shopping_df</span><span class="p">[</span><span class="s1">&#39;categoryid&#39;</span><span class="p">],</span>
+                                  <span class="s1">&#39;Price&#39;</span><span class="p">:</span><span class="n">finding_df</span><span class="p">[</span><span class="s1">&#39;Price_USD&#39;</span><span class="p">],</span>
+                                  <span class="s1">&#39;Item_Condition&#39;</span><span class="p">:</span> <span class="n">finding_df</span><span class="p">[</span><span class="s1">&#39;Item_Condition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">),</span>
+                                  <span class="s1">&#39;Listing_Time&#39;</span><span class="p">:</span><span class="n">finding_df</span><span class="p">[</span><span class="s1">&#39;Listing_Time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">),</span>
+                                  <span class="s1">&#39;Item_Specifics&#39;</span><span class="p">:</span><span class="n">shopping_df</span><span class="p">[</span><span class="s1">&#39;itemspeclist&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">),</span>
+                                  <span class="s1">&#39;Seller_ID&#39;</span><span class="p">:</span><span class="n">shopping_df</span><span class="p">[</span><span class="s1">&#39;sellerid&#39;</span><span class="p">],</span>
+                                  <span class="s1">&#39;Country&#39;</span><span class="p">:</span><span class="n">finding_df</span><span class="p">[</span><span class="s1">&#39;Country&#39;</span><span class="p">],</span>
+                                  <span class="s1">&#39;Zip_Code&#39;</span><span class="p">:</span><span class="n">finding_df</span><span class="p">[</span><span class="s1">&#39;Postal_Code&#39;</span><span class="p">],</span>
+                                  <span class="s1">&#39;Image_URL&#39;</span><span class="p">:</span><span class="n">shopping_df</span><span class="p">[</span><span class="s1">&#39;image_url&#39;</span><span class="p">],</span>
+                                  <span class="s1">&#39;SKU&#39;</span><span class="p">:</span><span class="n">shopping_df</span><span class="p">[</span><span class="s1">&#39;sku&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+<p>In this code block, we add the current data to the SQLite database, commit the changes, and close the connection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+    <span class="n">item_specs</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s2">&quot;item_specs&quot;</span><span class="p">,</span> <span class="n">ebay_db</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s2">&quot;append&quot;</span><span class="p">)</span>
+    <span class="n">ebay_db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">ebay_db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+</pre></div>
+</div>
+<p>These are the except blocks that we implement to account for any errors in our script. The first except block catches any instance of a connection error. The second block is a catch-all for any other errors our script may generate. The code block will generate a log file that stores the name of the error, the traceback message and the current category ID iteration that caused the error. Finally, as a fail-safe, we commit and close the database in these blocks, so any successfully cleaned rows prior to the error are saved.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A connection error occurred!&quot;</span><span class="p">)</span>
+    
+    
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">categoryerror</span> <span class="o">=</span> <span class="n">item_specs</span><span class="o">.</span><span class="n">CategoryID</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1">#extracts most recent CategoryID</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Ebay_Script_Log.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="c1">#w will overwrite existing content in the log.txt file</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Something other than a ConnectionError happened&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error occured at category &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">categoryerror</span><span class="p">))</span>
+    <span class="c1">#Troubleshooting:</span>
+    <span class="c1">#Check result.out file first, see if something happened </span>
+    <span class="c1">#If something happened, check Ebay_Script_Log.txt file to see traceback message </span>
+    
+    <span class="n">ebay_db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">ebay_db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="slurm-file-a-class-anchor-id-section-3-3-a">
+<h2><strong>Slurm File</strong> <a class="anchor" id="section_3_3"></a><a class="headerlink" href="#slurm-file-a-class-anchor-id-section-3-3-a" title="Permalink to this headline">¶</a></h2>
+<p>We use a batch script to automate the data collection process. Sbatch submits a batch script to Slurm where we can run the file name of interest that contains our script to collect data. This slurm file should have the extension slurm_file_name.slurm. Setting up the slurm script to run on a daily basis requires several parameters listed below. These options and their use cases that can be added to the body of the slurm file in order to customize its functionality.</p>
+<p><code>#SBATCH –begin=00:05</code>
+The –begin parameter sets the start time you want the job to run. In this example, this initiates the job at 12.05am</p>
+<p><code>BATCH –output=result.out</code>
+This is the file you specify in which to store the job output.</p>
+<p><code>#SBATCH -p standard</code>
+This parameter specifies the partition/queue in which to run the job.</p>
+<p><code>#SBATCH -A “<account>”</code></p>
+<p>Since we are running this slurm job on a high performance computing system, this specifies the account to be charged when submitting the job.</p>
+<p><code>#SBATCH -t 03:00:00</code><br />
+The -t parameter sets the time limit for which the job will stop running. For this wall clock time limit, the job will run for a maximum of 3 hours.</p>
+<p><code>#SBATCH –mail-type=fail</code>
+This parameter notifies the associated mail-user by email when a failed event type occurs.</p>
+<p><code>#SBATCH –mail-user= &lt;user “email address”&gt;</code>
+This specifies the user’s associated email address to be notified when a failed event type occurs.</p>
+<p><em>Figure 3.</em></p>
+<img src="fig3.jpg" width=1000 height=1200 />
+<p>Once the parameters of the slurm script is set, the next step is to set up the job to run. To set this up, navigate to the folder/directory that contains the slurm script. This can be accomplished by opening a terminal (via file &gt; new &gt; terminal on Rivanna) and checking to see if the <code>pwd</code> (present working directory) matches the location of interest. To navigate to the correct directory use type in cd followed by the location of interest. After making sure you are in the correct directory, type the function “sbatch slurm_file_name.slurm”. Hit enter, and if successful, the following message should appear “submitted batch job [number]”.</p>
+<p>There are several terminal commands that can check the status of a slurm job. These commands are listed below:</p>
+<p><code>scontrol show [job number]</code></p>
+<ul class="simple">
+<li><p>Lists detailed information for a job (useful for troubleshooting)</p></li>
+<li><p>The job number will change every 24 hours</p></li>
+</ul>
+<p><code>squeue –start</code> List all current jobs</p>
+<p><code>squeue -u <username> </code> List all running jobs for a user</p>
+<p><code>scancel <jobid></code> Cancel a single job</p>
+<p>For more information about slurm files and scheduling these jobs, check out these following websites <a href=" https://slurm.schedmd.com/pdfs/summary.pdf"> Cheat sheet Slurm Workload Manager </a> , <a href=" https://docs.rc.fas.harvard.edu/kb/convenient-slurm-commands/">Convenient SLURM Commands</a>, and  <a href=" https://slurm.schedmd.com/sbatch.html "> Slurm Documentation </a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2_chapter.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><strong>Getting Started with eBay’s APIs</strong> <a class="anchor" id="chapter2"></a></p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Elizabeth Lee, Nicholas Landi, Felipe Barraza, Karolina Naranjo-Velasco<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

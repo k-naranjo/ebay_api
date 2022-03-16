@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Started with eBay’s APIs &#8212; eBay&#39;s API Data Pipeline</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Data from eBay" href="3_chapter.html" />
+    <link rel="prev" title="eBay’s API Data Pipeline" href="1_chapter.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/steps.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">eBay's API Data Pipeline</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_chapter.html">
+   <strong>
+    eBay’s API Data Pipeline
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <strong>
+    Getting Started with eBay’s APIs
+   </strong>
+   <a class="anchor" id="chapter2">
+   </a>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_chapter.html">
+   <strong>
+    Getting Data from eBay
+   </strong>
+   <a class="anchor" id="chapter3">
+   </a>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/2_chapter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F2_chapter.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/2_chapter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentation-of-ebay-s-apis-a-class-anchor-id-section-2-1-a">
+   <strong>
+    Documentation of eBay’s APIs
+   </strong>
+   <a class="anchor" id="section_2_1">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-2-2-a">
+   <strong>
+    Understanding the different types of eBay’s APIs
+   </strong>
+   <a class="anchor" id="section_2_2">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-api-and-shopping-api-a-class-anchor-id-section-2-2-1-a">
+     <strong>
+      Finding API and Shopping API
+     </strong>
+     <a class="anchor" id="section_2_2_1">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#categories-a-class-anchor-id-section-2-2-2-a">
+     <strong>
+      Categories
+     </strong>
+     <a class="anchor" id="section_2_2_2">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ebays-third-party-personal-deletion-policy-a-class-anchor-id-section-2-3-a">
+   <strong>
+    eBay’s Third-Party Personal Deletion Policy
+   </strong>
+   <a class="anchor" id="section_2_3">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#understanding-the-term-personal-data-a-class-anchor-id-section-2-3-1-a">
+     <strong>
+      Understanding the term “Personal data”
+     </strong>
+     <a class="anchor" id="section_2_3_1">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#personal-data-under-federal-regulations-a-class-anchor-id-section-2-3-2-a">
+     <strong>
+      Personal Data under Federal Regulations
+     </strong>
+     <a class="anchor" id="section_2_3_2">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#californias-personal-data-laws-a-class-anchor-id-section-2-3-3-a">
+     <strong>
+      California’s Personal Data Laws
+     </strong>
+     <a class="anchor" id="section_2_3_3">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ethical-implications-a-class-anchor-id-section-2-3-4-a">
+     <strong>
+      Ethical Implications
+     </strong>
+     <a class="anchor" id="section_2_3_4">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Getting Started with eBay’s APIs <a class="anchor" id="chapter2"></a></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentation-of-ebay-s-apis-a-class-anchor-id-section-2-1-a">
+   <strong>
+    Documentation of eBay’s APIs
+   </strong>
+   <a class="anchor" id="section_2_1">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-2-2-a">
+   <strong>
+    Understanding the different types of eBay’s APIs
+   </strong>
+   <a class="anchor" id="section_2_2">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-api-and-shopping-api-a-class-anchor-id-section-2-2-1-a">
+     <strong>
+      Finding API and Shopping API
+     </strong>
+     <a class="anchor" id="section_2_2_1">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#categories-a-class-anchor-id-section-2-2-2-a">
+     <strong>
+      Categories
+     </strong>
+     <a class="anchor" id="section_2_2_2">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ebays-third-party-personal-deletion-policy-a-class-anchor-id-section-2-3-a">
+   <strong>
+    eBay’s Third-Party Personal Deletion Policy
+   </strong>
+   <a class="anchor" id="section_2_3">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#understanding-the-term-personal-data-a-class-anchor-id-section-2-3-1-a">
+     <strong>
+      Understanding the term “Personal data”
+     </strong>
+     <a class="anchor" id="section_2_3_1">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#personal-data-under-federal-regulations-a-class-anchor-id-section-2-3-2-a">
+     <strong>
+      Personal Data under Federal Regulations
+     </strong>
+     <a class="anchor" id="section_2_3_2">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#californias-personal-data-laws-a-class-anchor-id-section-2-3-3-a">
+     <strong>
+      California’s Personal Data Laws
+     </strong>
+     <a class="anchor" id="section_2_3_3">
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ethical-implications-a-class-anchor-id-section-2-3-4-a">
+     <strong>
+      Ethical Implications
+     </strong>
+     <a class="anchor" id="section_2_3_4">
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="getting-started-with-ebay-s-apis-a-class-anchor-id-chapter2-a">
+<h1><strong>Getting Started with eBay’s APIs</strong> <a class="anchor" id="chapter2"></a><a class="headerlink" href="#getting-started-with-ebay-s-apis-a-class-anchor-id-chapter2-a" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter, we will be giving an overview of accessing eBay’s API through their <a href="https://developer.ebay.com/ ">developer’s program</a>. This chapter will be more theoretical in understanding the specific APIs by eBay, and what features you can find within these APIs compared to chapter 3. We will also give an overview of the different steps we implemented to access eBay’s API. Once access is granted, there are many different APIs available, so we will be condensing this information to be relevant for the scope of this project.</p>
+<div class="section" id="documentation-of-ebay-s-apis-a-class-anchor-id-section-2-1-a">
+<h2><strong>Documentation of eBay’s APIs</strong> <a class="anchor" id="section_2_1"></a><a class="headerlink" href="#documentation-of-ebay-s-apis-a-class-anchor-id-section-2-1-a" title="Permalink to this headline">¶</a></h2>
+<p>eBay has different APIs to access various listings features. These features can be understood by the characteristics of a given item posting such as the given item or product, description, price, buying, delivery options, etc. eBay stores the information of the various post characteristics in different APIs in their documentation. The documentation on eBay’s developer’s program is fairly comprehensive, but we will condense that information to make it relevant to this project. Please note that the documentation is vast and changes on occasion, so it is best to cross reference information when something does not seem right.</p>
+</div>
+<div class="section" id="understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-2-2-a">
+<h2><strong>Understanding the different types of eBay’s APIs</strong> <a class="anchor" id="section_2_2"></a><a class="headerlink" href="#understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-2-2-a" title="Permalink to this headline">¶</a></h2>
+<p>In order to account for the variety of users that use eBay’s developer’s program, eBay has many APIs that access different aspects of listings and marketplaces. By using an API, eBay can keep track of who is using their data and for what purposes. When we use an API, we are keeping in accordance with their data governance while having a streamlined process of accessing data. While there is room to explore eBay’s different APIs further, to find the variables of interest for our project, we used two APIs: the Shopping API and the Finding API. We used two APIs, as different variables of interest could be extracted from the Finding and Shopping API. First, we used the Finding API to filter across categories of interest in a specific timeframe. Next, we will use the Shopping API to go through the items extracted from the Finding API to find other variables of interest for specific listings. The details of the implementation are in the following subsections.</p>
+<div class="section" id="finding-api-and-shopping-api-a-class-anchor-id-section-2-2-1-a">
+<h3><strong>Finding API and Shopping API</strong> <a class="anchor" id="section_2_2_1"></a><a class="headerlink" href="#finding-api-and-shopping-api-a-class-anchor-id-section-2-2-1-a" title="Permalink to this headline">¶</a></h3>
+<p>The Finding API<a name="cite_ref-8"></a><a class="reference external" href="#cite_note-8"><sup>[8]</sup></a> is the first API we access to gather some of the features of interest for the scope of the project. We used the Finding API to search for items posted on the platform. Different calls are ways in which you can gather the data based on certain parameters. In the table below, various types of calls from the Finding API are discussed. The table summarizes the type of call, its description, and links where users can access complementary information.</p>
+<p>The goal of our project is to find illicit listings based on certain categories of interest that are pre-decided from discussion with stakeholders. In the Categories section of this chapter, we discuss how we came about deciding on categories of interest to input as a parameter of the <code>findItemsbyCategory</code> call under the Finding API. In this project, we decided to use the <code>findItems</code> by Category call because the goal in data collection is to get data on categories where illicit items might be listed under. Categories are structures organized in a hierarchical form composed of sheets containing listings. For example, eBay shopping uses <code>GetCategoryInfo</code> to search for information about the names and IDs of a product.</p>
+<p><em>Table 4.</em></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Call</p></th>
+<th class="head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a href="https://developer.ebay.com/devzone/finding/CallRef/findItemsAdvanced.html"><code>findItemsAdvanced</code></a></p></td>
+<td><p>Searches for items by   category or keyword or both .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="https://developer.ebay.com/devzone/finding/CallRef/findItemsByCategory.html"><strong><code>findItemsByCategory</code></strong></a></p></td>
+<td><p>Finds items in a specific eBay category Id numbers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a href="https://developer.ebay.com/devzone/finding/CallRef/findItemsByKeywords.html"><code>findItemsByKeywords</code></a></p></td>
+<td><p>Finds items by a keyword   query and provides details by matching the search criteria.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="https://developer.ebay.com/devzone/finding/CallRef/findItemsByProduct.html "><code>findItemsByProduct</code></a></p></td>
+<td><p>Gets items based on a   product ID, i.e., ISBN.</p></td>
+</tr>
+<tr class="row-even"><td><p><a href="https://developer.ebay.com/devzone/finding/CallRef/findItemsIneBayStores.html "><code>findItemsIneBayStores</code></a></p></td>
+<td><p>Searches for items in the   eBay store inventories. Users can combine storeName with keywords, or use   keywords without storeName to search for items in all eBay stores.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="https://developer.ebay.com/devzone/finding/CallRef/getHistograms.html"><code>getHistograms</code></a></p></td>
+<td><p>Gets categories and/or   aspect histogram information for eBay’s categories.</p></td>
+</tr>
+<tr class="row-even"><td><p><a href="https://developer.ebay.com/devzone/finding/CallRef/getSearchKeywordsRecommendation.html     "><code>getSearchKeywordsRecommendation</code></a></p></td>
+<td><p>Gets   specified keywords and returns correctly spelled keywords for best search   results.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="https://developer.ebay.com/devzone/finding/CallRef/getVersion.html "><code>getVersion</code></a></p></td>
+<td><p>Provides information about   the current version of the service</p></td>
+</tr>
+</tbody>
+</table>
+<p>By using the <code>findItemsbyCategory</code> under the Finding API, users can get various variables of interest (output) including item ID, product title, country, price, and postal code. We picked this call and corresponding API, because this project aims to quantify the illicit cultural trade industry. By collecting data on these variables, we are able to identify unique listings and what the object is. While the variables from this API are insightful, there are some missing gaps for data that this project is interested in. A unique seller identifier and other information about the details of the object cannot be found in this API. Thus, we use the Shopping API <a name="cite_ref-9"></a><a class="reference external" href="#cite_note-9"><sup>[9]</sup></a>to get more corresponding data to the listings extracted from the Finding API. Details about feature specifics are in our data description section.</p>
+<p><em>Table 5.</em></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Call</p></th>
+<th class="head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a href=" https://developer.ebay.com/DevZone/shopping/docs/CallRef/FindProducts.html "><code>FindProducts</code></a></p></td>
+<td><p>Supports shopping   comparisons of products by passing in keywords (related to the item) and   retrieving product titles, descriptions, and/or items specifics.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href=" https://developer.ebay.com/DevZone/shopping/docs/CallRef/GetCategoryInfo.html"><code>   GetCategoryInfo </code></a></p></td>
+<td><p>Retrieves information for a   specified category, including name, ID value, and other names and category   IDs of the product. Also, it includes the version number and its last update   of a category.</p></td>
+</tr>
+<tr class="row-even"><td><p><a href=" https://developer.ebay.com/DevZone/shopping/docs/CallRef/GeteBayTime.html"><code>GeteBayTime</code></a></p></td>
+<td><p>Returns the date and time   of a processed request in Greenwich    Mean Time (GMT).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href=" https://developer.ebay.com/DevZone/shopping/docs/CallRef/GetItemStatus.html"><code>GetItemStatus</code></a></p></td>
+<td><p>This call is used to get   the current status of up to 20 listings and to retrieve information of   listings status, fixed price, and scheduled end time of listing. However, it   returns limited data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a href=" https://developer.ebay.com/DevZone/shopping/docs/CallRef/GetMultipleItems.html "><code>GetMultipleItems</code></a></p></td>
+<td><p>Gets visible information on   a listing’s View Item page, such as title and prices .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href=" https://developer.ebay.com/DevZone/shopping/docs/CallRef/GetShippingCosts.html "><code>GetShippingCosts</code></a></p></td>
+<td><p>Retrieves all shipping   types of an item, including flat-rate and calculated, to a specified   destination country and postal code.</p></td>
+</tr>
+<tr class="row-even"><td><p><a href=" https://developer.ebay.com/DevZone/shopping/docs/CallRef/GetSingleItem.html"><code>GetSingleItem</code></a></p></td>
+<td><p>Shows the general public   information on the view item (title, description, basic price information,   etc.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href=" https://developer.ebay.com/DevZone/shopping/docs/CallRef/GetUserProfile.html "><code>GetUserProfile</code></a></p></td>
+<td><p>Returns public user   information based on the specified user ID, including the feedback score.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Understanding call limits is an important aspect when collecting data. The Finding API limits users from a developer’s account to make 5000 calls in a 24 hour period. The 24 time frame resets itself at 12:00 a.m. PST. As we will discuss in chapter 3, our implementation of a recursive script that collects data runs to be within this call limit.</p>
+<p>As a brief overview, an API call is the application’s operation to process the request for details of a particular product (Remember that the intermediary - aka the API- seeks and delivers the information). The API receives the calls according to an index that allows them to receive the requested information. More information about call limits across different APIs can be found on eBay’s developer’s programs website. There, users will find the API’s user guide and information on how to “make a call” across all APIs.</p>
+<p>In terms of collecting data across categories within a specific timeframe, there are several key parameters that one would include in the Finding API call to get the corresponding data. This can be understood as the “input” of accessing the data of interest from the Finding API/ To account for the different categories of interest, a call will be made for each of the categories. To account for specific timeline of data collection, a time parameter will also be included. In the case of this project, the timeframe accounted for a 24 hour time period and the categories that pertain to illicit exchange. Details about the code and implementation is discussed in chapter 3.</p>
+<p>The “output” from the Finding API are various features of interest. The key variables we extracted as listed in the data description section below including item ID, product title, country, and price. These features are outputted as a JSON format, so we convert this to a dataframe to format the data in an intuitive format. Further, instruction on cleaning this output to fit in a dataframe will be discussed in the next chapter. More details about the Finding API can be found <a href=" https://developer.ebay.com/devzone/finding/CallRef/findItemsByCategory.html">here</a>.</p>
+<p>While the Finding API allows us to get a lot of information regarding the listing by filtering through categories of interest, the Shopping API allows us to use unique item IDs to get more data about these listings. We are using both the Finding API and Shopping API to get data that pertains to the project. One of the important features that is outputted from the Finding API. The item ids in turn becomes the input for the Shopping API. This allows us to limit data collected from the Shopping API to listing we already decided — based on category — that are important from the Finding API.</p>
+<p>Similar to the Finding API, the Shopping API also contains different calls that make for accessing data based on different inputs. We found two calls from the Shopping API that could have given us the same variables of interest but at different scales. The <code>GetSingleItem</code> call and the <code>GetMultipleItems</code> call both output the same features that would supplement the features we obtained from the Finding API. The Shopping API also has a call limit of <strong>5000 calls per 24 time period</strong> (starting at 12:00 a.m. PST). This call limit is a large motivator of why we implemented the <code>GetMultipleItems</code> call over the <code>GetSingleItem</code> call. While only one item id could be implemented in the <code>GetSingleItem</code> call for each time, one could input up to 20 item ids for a single <code>GetMultipleItems</code> call. This would allow us to maximize the number of observations we get in a single day. There are sections in chapter 3 where we break down how to subset lists of 20 items, so that we can implement the <code>GetMultipleItems</code> call.</p>
+<p>To integrate the data we collect from the Finding API to the Shopping API, we input item IDs  into our <code>GetMultipleItem</code> call. After inputting item IDs as a parameter, we will be able to extract relevant data into a dataframe. Similar to the Finding API, the default output is not a dataframe, so we have to perform some data processing and data cleaning. The details of cleaning this will be discussed in the next chapter.</p>
+<p>The “output” from the Shopping API are features of interest that supplement the data we collect from the Finding API. The key variables we extracted as listed in the data description section below. More information about the <code>GetMultipleItems</code> call from the Shopping API can be found <a href="https://developer.ebay.com/Devzone/shopping/docs/CallRef/GetMultipleItems.html">here</a>.</p>
+</div>
+<div class="section" id="categories-a-class-anchor-id-section-2-2-2-a">
+<h3><strong>Categories</strong> <a class="anchor" id="section_2_2_2"></a><a class="headerlink" href="#categories-a-class-anchor-id-section-2-2-2-a" title="Permalink to this headline">¶</a></h3>
+<p>Categories are the first step to decide where to search for illicit goods. More generally, categories allow one to narrow down on the marketplaces and types of listings that are in the scope of the project. Toi narrow down on categories, it is first important to communicate and understand the research goals. It is also important to understand the structure of eBay categories. In this section, we will discuss how we narrowed down on categories, the structure of eBay’s categories, the implementation of categories, and additional tools.</p>
+<p>After having an initial meeting with stakeholders to understand their project goals, we decided that eBay categories are the most intuitive place to start looking for illicit cultural goods. Since eBay is a large online marketplace, they have listings — such as electronics, toys, and clothes — that are not relevant to our project goals. Thus, we narrowed our search to specific categories that might be of interest including antiques, art, coins &amp; paper money.</p>
+<p>eBay’s categories all have a corresponding category ID. Categories also exist in a nested structure. To understand the relationship between categories, each category has three parameters associated with the category name: category id, parent, and leaf. The category id is an unique identifier for each category. This is a numerical id that is consistent throughout eBay. However, category ids might change on a rare occasion if eBay deems that category to be growing/deprecating. At the end of this section, we provide where eBay updates its users about categories. eBay sellers and users alike use categories to identify goods that are important to them. The parent parameter identifies whether the specific category is a main category. A parent category means that category does not belong to any larger encompassing category. This category may or may not have subcategories. A parent category is identified by eBay with a “-1”. The leaf parameter identifies whether that category does not have any more subcategories for expansion. If a category is identified as a leaf category, there are no smaller categories belonging to that one category. These parameters help identify unique categories, and organize the categories in their nested structure.</p>
+<p>For the scope of this project, we narrowed down on categories that might have listings that are illicit. We narrowed down on the categories from meetings with our sponsors. We use these categories and their corresponding IDs as our initial input to the Finding API. By going through each category, we are able to get data from categories that interest us. While each item can theoretically belong in many categories, when we extract data for each item, they are associated with a primary category/category ID. This means that when parsing through eBay listings with categories, there will be no duplicate listings across different categories. A complete table of categories and corresponding category identifiers that we use are below. We also included links to resources to better understand the structure of categories, and category updates.</p>
+<p>Resources for categories:</p>
+<ul class="simple">
+<li><p><a href="https://www.isoldwhat.com/ "> Third party website to understand categories </a></p></li>
+<li><p><a href="https://pages.ebay.com/sellerinformation/news/categorychanges.html "> eBay’s description and updates of categories </a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ebays-third-party-personal-deletion-policy-a-class-anchor-id-section-2-3-a">
+<h2><strong>eBay’s Third-Party Personal Deletion Policy</strong>  <a class="anchor" id="section_2_3"></a><a class="headerlink" href="#ebays-third-party-personal-deletion-policy-a-class-anchor-id-section-2-3-a" title="Permalink to this headline">¶</a></h2>
+<p>As of September 15, 2021, eBay’s Developer’s Program requires users to be in compliance with their marketplace account deletion notification system. This requires users of eBay’s API to set up a notification that alerts them to delete personal data relevant to listings that have been taken down. Personal data is not clearly defined, so after research, we narrowed down on a definition of personal data that we believe is in compliance with this policy. Personal data in this scenario is data that can identify a particular person who listed the item. Some examples of personal data include country, zip code, and the personal username of the lister. We understand the need to protect people’s privacy and personal data online, so we were happy to comply. However, since we want to identify unique listers on eBay for the scope of our project, we needed to find a way to encrypt this personal data. We arrived at a solution that encrypts unique lister usernames. The code we used to encrypt can be found in Chapter 3. After encryption, there is no way for the usernames to be decrypted to identify the user.  We believe that this was the best solution to keep in compliance with eBay while still being able to form a network for our project. More information about complying with the marketplace account deletion from eBay can be found <a href="https://developer.ebay.com/marketplace-account-deletion"> here</a>.</p>
+<div class="section" id="understanding-the-term-personal-data-a-class-anchor-id-section-2-3-1-a">
+<h3><strong>Understanding the term “Personal data”</strong> <a class="anchor" id="section_2_3_1"></a><a class="headerlink" href="#understanding-the-term-personal-data-a-class-anchor-id-section-2-3-1-a" title="Permalink to this headline">¶</a></h3>
+<p>To comply with eBay’s personal data deletion policies <a name="cite_ref-9"></a><a class="reference external" href="#cite_note-9"><sup>[9]</sup></a> , our team researched the meaning behind “Personal Data” and assessed its application. Our findings suggest that there is no single definition of “personal data” that assures us how the company will interpret its privacy and personal data policy. The law that appears to apply more closely to our project exists in the State of California, which distinguishes between “Personal information” and “sensitive personal information.”</p>
+<p>By way of information, and without suggesting that what we present here can be taken as legal advice, we offer some highlights of our research on the subject below.</p>
+</div>
+<div class="section" id="personal-data-under-federal-regulations-a-class-anchor-id-section-2-3-2-a">
+<h3><strong>Personal Data under Federal Regulations</strong> <a class="anchor" id="section_2_3_2"></a><a class="headerlink" href="#personal-data-under-federal-regulations-a-class-anchor-id-section-2-3-2-a" title="Permalink to this headline">¶</a></h3>
+<p>According to experts, there is no single data protection legislation in the United States. Instead, hundreds of laws regulate the use of personal data at both the federal and state levels. To complicate matters further, several federal data protection laws are sector-specific or focus on data types.  Consequently, “The definition of personal information in the U.S. is not uniform across all states or all regulations.”<a name="cite_ref-10"></a><a class="reference external" href="#cite_note-10"><sup>[10]</sup></a>   Although there isn’t a plenary data protection regulation at the federal level, the U.S. Federal Trade Commission (FTC) “often sets the tone on federal privacy and data security issues.”<a name="cite_ref-11"></a><a class="reference external" href="#cite_note-11"><sup>[11]</sup></a></p>
+<p>According to a source, the FTC currently considers personal data “information that is linked or reasonably linkable to a specific individual, which could include I.P. addresses and device identifiers, as personal data.”<a name="cite_ref-12"></a><a class="reference external" href="#cite_note-12"><sup>[12]</sup></a></p>
+<p>State breach notification laws and data security laws typically define personal information narrowly, focusing on more sensitive categories of information (“sensitive personal data”). Generally, personal health data, financial data, creditworthiness data, student data, biometric data, personal information collected online from children under 13, and information that can be used to carry out identity theft or fraud are considered sensitive. This category can also include social security numbers and other government identifiers, credit card and financial account numbers, passwords and user credentials, health or medical information, insurance I.D., digital signatures, and biometrics.</p>
+</div>
+<div class="section" id="californias-personal-data-laws-a-class-anchor-id-section-2-3-3-a">
+<h3><strong>California’s Personal Data Laws</strong> <a class="anchor" id="section_2_3_3"></a><a class="headerlink" href="#californias-personal-data-laws-a-class-anchor-id-section-2-3-3-a" title="Permalink to this headline">¶</a></h3>
+<p>eBay’s recent changes to its internal policies have been triggered by legislation recently passed in its home state California. Two pieces of legislation are relevant: the California Consumer Privacy Act (CCPA) and the recently enacted California Privacy Rights Act (CPRA). Regarding the definition of personal information, the CCPA defines it as any information <em>“that identifies, relates to, describes, is reasonably capable of being associated with, or could reasonably be linked, directly or indirectly, with a particular consumer or household.”</em></p>
+<p>In turn, the CPRA creates a new category of personal information – “sensitive personal information,” which provides consumers with a new right to limit the use and disclosure of such information. Additionally, businesses must include specific disclosures on their sensitive personal information collection and use practices. The CPRA defines sensitive personal information as consumer’s social security, ethnicity, geolocation, etc. <a name="cite_ref-13"></a><a class="reference external" href="#cite_note-13"><sup>[13]</sup></a></p>
+<p>Further, eBay’s policy refers to the broader concept of “personal data”.  In order to stay in compliance with this broad definition, we do not keep personal information for marketplaces and listings including and not limited to seller and marketplace identifiers. We comply with this by removing and/or encrypting any of these characteristics associated with an individual seller. We follow California’s definition of “personal data” that provides that the primary criterion for determining whether this protection covers a type of information is its ability to reasonably identify, relate to, describe, or be associated with a particular consumer or household. The features we collect do not contain any information pertaining to the seller, and instead focus on the characteristics of the goods.</p>
+</div>
+<div class="section" id="ethical-implications-a-class-anchor-id-section-2-3-4-a">
+<h3><strong>Ethical Implications</strong> <a class="anchor" id="section_2_3_4"></a><a class="headerlink" href="#ethical-implications-a-class-anchor-id-section-2-3-4-a" title="Permalink to this headline">¶</a></h3>
+<p>When building the data pipeline, we face the ethical dilemmas of the preservation of individual data. The implication of storing an individual’s data stems from eBay’s marketplace account deletion notification update in September 2021. As discussed in the Personal Data section, this means that for every marketplace (seller’s marketplace or online storefront) that was deleted, all personal seller data that came along that marketplace must be deleted as well. This implication can be looked at from the perspective of multiple stakeholders including eBay as a corporation, seller’s, and researchers using eBay’s developer’s program to access this data.</p>
+<p>eBay as a corporation wants to protect their user’s personal privacy. This is discussed in the previous section as they implement rules that are broad enough to comply with regulations across state borders. From a utilitarian perspective, in the short term, sellers will likely suffer from an overall decrease in happiness due to their private information being used without their knowledge/consent in our research. In the long run, sellers will benefit from increased trust with their buyers due to a safer online antiquities market. Removal of competitive sellers partaking in the illicit trade will also create a more fair bidding environment. For researchers, keeping seller data will allow us to conduct rigorous network analysis, and provide the foundational framework necessary to begin to piece together the illicit trade market. This will improve research efforts in an area where big data collection has not been greatly explored yet. This research could assist policy-makers to map and understand the market vulnerabilities exploited and created in an online setting.</p>
+<p>The choices made in building this data pipeline complies with eBay’s rules with keeping other stakeholders in mind. Beyond building an automated data pipeline, we note the metadata and other implications of working with real world data. As a result, this pipeline presents an opportunity to inform others about data ethics, while making sure data science is performed in a fair manner.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="1_chapter.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><strong>eBay’s API Data Pipeline</strong></p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3_chapter.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Getting Data from eBay</strong>  <a class="anchor" id="chapter3"></a></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Elizabeth Lee, Nicholas Landi, Felipe Barraza, Karolina Naranjo-Velasco<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
