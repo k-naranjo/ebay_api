@@ -1,0 +1,1016 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eBay’s API Data Pipeline &#8212; eBay&#39;s API Data Pipeline</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started with eBay’s APIs" href="2_chapter.html" />
+    <link rel="prev" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/steps.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">eBay's API Data Pipeline</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown-notebooks.html">
+   Notebooks with MyST Markdown
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <strong>
+    eBay’s API Data Pipeline
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_chapter.html">
+   <strong>
+    Getting Started with eBay’s APIs
+   </strong>
+   <a class="anchor" id="chapter2">
+   </a>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_chapter.html">
+   <strong>
+    Getting Data from eBay
+   </strong>
+   <a class="anchor" id="chapter3">
+   </a>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/1_chapter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F1_chapter.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/1_chapter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preliminaries-a-class-anchor-id-preliminaries-a">
+     <strong>
+      Preliminaries
+     </strong>
+     <a class="anchor" id="Preliminaries">
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-this-manual-about-a-class-anchor-id-section-1-1-a">
+       <strong>
+        What Is this Manual About?
+       </strong>
+       <a class="anchor" id="section_1_1">
+       </a>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#description-of-ebay-s-api-data-pipeline-a-class-anchor-id-section-1-2-a">
+       <strong>
+        Description of eBay’s API Data Pipeline
+       </strong>
+       <a class="anchor" id="section_1_2">
+       </a>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#key-concepts-a-class-anchor-id-section-1-3-a">
+       <strong>
+        Key Concepts
+       </strong>
+       <a class="anchor" id="section_1_3">
+       </a>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-kinds-of-data-a-class-anchor-id-section-1-4-a">
+       <strong>
+        What Kinds of Data?
+       </strong>
+       <a class="anchor" id="section_1_4">
+       </a>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#a-dictionary-od-ebay-categories-a-class-anchor-id-section-1-4-1-a">
+         <strong>
+          A dictionary od eBay Categories
+         </strong>
+         <a class="anchor" id="section_1_4_1">
+         </a>
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-started-with-ebay-s-apis-a-class-anchor-id-chapter2-a">
+     Getting Started with eBay’s APIs
+     <a class="anchor" id="chapter2">
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#documentation-of-ebay-s-apis-a-class-anchor-id-section-2-1-a">
+       Documentation of eBay’s APIs
+       <a class="anchor" id="section_2_1">
+       </a>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-2-2-a">
+       Understanding the different types of eBay’s APIs
+       <a class="anchor" id="section_2_2">
+       </a>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#finding-api-and-shopping-api-a-class-anchor-id-section-2-2-1-a">
+         Finding API and Shopping API
+         <a class="anchor" id="section_2_2_1">
+         </a>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#categories-a-class-anchor-id-section-2-2-2-a">
+         Categories
+         <a class="anchor" id="section_2_2_2">
+         </a>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ebays-third-party-personal-deletion-policy-a-class-anchor-id-section-2-3-a">
+       eBay’s Third-Party Personal Deletion Policy
+       <a class="anchor" id="section_2_3">
+       </a>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#understanding-the-term-personal-data-a-class-anchor-id-section-2-3-1-a">
+         Understanding the term “Personal data”
+         <a class="anchor" id="section_2_3_1">
+         </a>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#personal-data-under-federal-regulations-a-class-anchor-id-section-2-3-2-a">
+         Personal Data under Federal Regulations
+         <a class="anchor" id="section_2_3_2">
+         </a>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#californias-personal-data-laws-a-class-anchor-id-section-2-3-3-a">
+         California’s Personal Data Laws
+         <a class="anchor" id="section_2_3_3">
+         </a>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ethical-implications-a-class-anchor-id-section-2-3-4-a">
+         Ethical Implications
+         <a class="anchor" id="section_2_3_4">
+         </a>
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-data-from-ebay-a-class-anchor-id-chapter3-a">
+     Getting Data from eBay
+     <a class="anchor" id="chapter3">
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#introduction-to-the-ebay-data-pipeline-a-class-anchor-id-section-3-1-a">
+       Introduction to the eBay Data Pipeline
+       <a class="anchor" id="section_3_1">
+       </a>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-3-2-a">
+         Understanding the different types of eBay’s APIs
+         <a class="anchor" id="section_3_2">
+         </a>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#flask-app-a-class-anchor-id-section-3-2-1-a">
+         Flask App
+         <a class="anchor" id="section_3_2_1">
+         </a>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#navigating-through-the-code-a-class-anchor-id-section-3-2-a">
+       Navigating through the Code
+       <a class="anchor" id="section_3_2">
+       </a>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#slurm-file-a-class-anchor-id-section-3-3-a">
+       Slurm File
+       <a class="anchor" id="section_3_3">
+       </a>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>eBay’s API Data Pipeline</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#preliminaries-a-class-anchor-id-preliminaries-a">
+     <strong>
+      Preliminaries
+     </strong>
+     <a class="anchor" id="Preliminaries">
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-this-manual-about-a-class-anchor-id-section-1-1-a">
+       <strong>
+        What Is this Manual About?
+       </strong>
+       <a class="anchor" id="section_1_1">
+       </a>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#description-of-ebay-s-api-data-pipeline-a-class-anchor-id-section-1-2-a">
+       <strong>
+        Description of eBay’s API Data Pipeline
+       </strong>
+       <a class="anchor" id="section_1_2">
+       </a>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#key-concepts-a-class-anchor-id-section-1-3-a">
+       <strong>
+        Key Concepts
+       </strong>
+       <a class="anchor" id="section_1_3">
+       </a>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-kinds-of-data-a-class-anchor-id-section-1-4-a">
+       <strong>
+        What Kinds of Data?
+       </strong>
+       <a class="anchor" id="section_1_4">
+       </a>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#a-dictionary-od-ebay-categories-a-class-anchor-id-section-1-4-1-a">
+         <strong>
+          A dictionary od eBay Categories
+         </strong>
+         <a class="anchor" id="section_1_4_1">
+         </a>
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-started-with-ebay-s-apis-a-class-anchor-id-chapter2-a">
+     Getting Started with eBay’s APIs
+     <a class="anchor" id="chapter2">
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#documentation-of-ebay-s-apis-a-class-anchor-id-section-2-1-a">
+       Documentation of eBay’s APIs
+       <a class="anchor" id="section_2_1">
+       </a>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-2-2-a">
+       Understanding the different types of eBay’s APIs
+       <a class="anchor" id="section_2_2">
+       </a>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#finding-api-and-shopping-api-a-class-anchor-id-section-2-2-1-a">
+         Finding API and Shopping API
+         <a class="anchor" id="section_2_2_1">
+         </a>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#categories-a-class-anchor-id-section-2-2-2-a">
+         Categories
+         <a class="anchor" id="section_2_2_2">
+         </a>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ebays-third-party-personal-deletion-policy-a-class-anchor-id-section-2-3-a">
+       eBay’s Third-Party Personal Deletion Policy
+       <a class="anchor" id="section_2_3">
+       </a>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#understanding-the-term-personal-data-a-class-anchor-id-section-2-3-1-a">
+         Understanding the term “Personal data”
+         <a class="anchor" id="section_2_3_1">
+         </a>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#personal-data-under-federal-regulations-a-class-anchor-id-section-2-3-2-a">
+         Personal Data under Federal Regulations
+         <a class="anchor" id="section_2_3_2">
+         </a>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#californias-personal-data-laws-a-class-anchor-id-section-2-3-3-a">
+         California’s Personal Data Laws
+         <a class="anchor" id="section_2_3_3">
+         </a>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#ethical-implications-a-class-anchor-id-section-2-3-4-a">
+         Ethical Implications
+         <a class="anchor" id="section_2_3_4">
+         </a>
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-data-from-ebay-a-class-anchor-id-chapter3-a">
+     Getting Data from eBay
+     <a class="anchor" id="chapter3">
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#introduction-to-the-ebay-data-pipeline-a-class-anchor-id-section-3-1-a">
+       Introduction to the eBay Data Pipeline
+       <a class="anchor" id="section_3_1">
+       </a>
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-3-2-a">
+         Understanding the different types of eBay’s APIs
+         <a class="anchor" id="section_3_2">
+         </a>
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#flask-app-a-class-anchor-id-section-3-2-1-a">
+         Flask App
+         <a class="anchor" id="section_3_2_1">
+         </a>
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#navigating-through-the-code-a-class-anchor-id-section-3-2-a">
+       Navigating through the Code
+       <a class="anchor" id="section_3_2">
+       </a>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#slurm-file-a-class-anchor-id-section-3-3-a">
+       Slurm File
+       <a class="anchor" id="section_3_3">
+       </a>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="ebays-api-data-pipeline">
+<h1><strong>eBay’s API Data Pipeline</strong><a class="headerlink" href="#ebays-api-data-pipeline" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="#Preliminaries">Preliminaries</a></p>
+<ul>
+<li><p><a class="reference external" href="#section_1_1">What Is this Manual About?</a></p></li>
+<li><p><a class="reference external" href="#Section_1_2">Description of eBay’s API Data Pipeline</a></p></li>
+<li><p><a class="reference external" href="#Section_1_3">Key Concepts</a></p></li>
+<li><p><a class="reference external" href="#Section_1_4">What Kinds of Data? </a></p>
+<ul>
+<li><p><a class="reference external" href="#section_1_4_1">A dictionary of eBay Categories </a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#chapter2">Getting Started with eBay’s APIs</a></p>
+<ul>
+<li><p><a class="reference external" href="#section_2_1">Documentation of eBay’s APIs</a></p></li>
+<li><p><a class="reference external" href="#section_2_2">Understanding the different types of eBay’s APIs</a></p>
+<ul>
+<li><p><a class="reference external" href="#section_2_2_1">Finding API and Shopping API</a></p></li>
+<li><p><a class="reference external" href="#section_2_2_2">Categories</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#section_2_3">eBay’s Third-Party Personal Deletion Policy</a></p>
+<ul>
+<li><p><a class="reference external" href="#section_2_3_1">Understanding the term “Personal data”</a></p></li>
+<li><p><a class="reference external" href="#section_2_3_2">Personal Data under Federal Regulations</a></p></li>
+<li><p><a class="reference external" href="#section_2_3_3">California’s Personal Data Laws</a></p></li>
+<li><p><a class="reference external" href="#section_2_3_4">Ethical Implications</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#chapter3">Getting Data from eBay</a></p>
+<ul>
+<li><p><a class="reference external" href="#section_3_1">Introduction to the eBay Data Pipeline</a></p>
+<ul>
+<li><p><a class="reference external" href="#section_3_1_1">Flask App</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#section_3_2">Navigating through the Code</a></p></li>
+<li><p><a class="reference external" href="#section_3_3">Slurm File</a></p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="preliminaries-a-class-anchor-id-preliminaries-a">
+<h3><strong>Preliminaries</strong> <a class="anchor" id="Preliminaries"></a><a class="headerlink" href="#preliminaries-a-class-anchor-id-preliminaries-a" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="what-is-this-manual-about-a-class-anchor-id-section-1-1-a">
+<h4><strong>What Is this Manual About?</strong> <a class="anchor" id="section_1_1"></a><a class="headerlink" href="#what-is-this-manual-about-a-class-anchor-id-section-1-1-a" title="Permalink to this headline">¶</a></h4>
+<p>This manual aims to provide technical guidance and documentation to the process of building an automated data pipeline from eBay’s developer’s program for research purposes. Specific technical documentation will walk through the process of accessing eBay’s Application Programming Interface (API), and documenting the code that collects the data. This is a product of the capstone project, “Network Mobility of Illicit Cultural Property” developed by the UVA Data Science School and the <a href="https://curialab.org/">Cultural Resilience Informatics and Analysis (CURIA) Lab</a>.</p>
+<p>This project stems from research of online marketplace as platforms for illicit trade. The scale of global art crime has been difficult to quantify due to the vast number of transactions and varying methods of trade. The illicit antiquities trade has moved away from physical specialist shops in favor of online buying and selling platforms such as eBay. These online platforms characterized by transactions and vendors offering heterogeneous goods have not been systematically studied due to its data-intensive nature.</p>
+<p>This research project designs a robust data pipeline that collects, processes, and stores data to quantify and analyze the network mobility of illicit cultural property. The data pipeline consists of a template for accessing eBay’s API, understanding API documentation, and collecting necessary features for future analysis. The metadata for building and maintaining the data pipeline is recorded in an in-depth guide to account for data collection bias.</p>
+<p>We will begin by explaining the basic technological concepts needed to build an API. This chapter will also include a dictionary of the eBay categories used to extract the necessary data from the listings in the antiques categories. The chapter includes a data modeling section that explains the SQL schema of building a relational database.</p>
+<p>The second chapter is a user-friendly and comprehensive description of eBay’s API documentation, focused on the Shopping and the Finding APIs. A theoretical framework of picking these APIs, data description, and a section of legal and ethical challenges will also be included in this chapter.</p>
+<p>Finally, the third chapter focuses on implementing the data pipeline architecture designed to collect data from eBay. This chapter includes a step-by-step guide on how to obtain this data from a recursive script, and also a tutorial to run these activities from the Rivanna UVA platform that facilitates the data storage systems. The result of this data pipeline framework is a replicable blueprint for interacting with an online marketplace’s API environment. This project will act as a precursor to begin research regarding the global trade of illicit cultural property through subsequent network and spatial analysis.</p>
+<p>The updated version of this manual is 2022-02-27.</p>
+</div>
+<div class="section" id="description-of-ebay-s-api-data-pipeline-a-class-anchor-id-section-1-2-a">
+<h4><strong>Description of eBay’s API Data Pipeline</strong> <a class="anchor" id="section_1_2"></a><a class="headerlink" href="#description-of-ebay-s-api-data-pipeline-a-class-anchor-id-section-1-2-a" title="Permalink to this headline">¶</a></h4>
+<p>The first step of getting data from eBay’s developer’s program was to get API keys. The steps of collecting these keys are described in the Understanding API chapter while the implementation of a Flask app is in chapter 3.</p>
+<p>The following flowchart provides a roadmap of the pipeline architecture. This general procedure ranges from collecting the access keys to running an automated script. This algorithm consists of three main activities in an automated fashion: connecting to the desired API (Shopping and Finding API), mining the data, and saving the information in a SQL database. More information about each step will be discussed in the following chapters.</p>
+<img src="1_flowchart.jpg" width=1800 height=2000 />
+</div>
+<div class="section" id="key-concepts-a-class-anchor-id-section-1-3-a">
+<h4><strong>Key Concepts</strong> <a class="anchor" id="section_1_3"></a><a class="headerlink" href="#key-concepts-a-class-anchor-id-section-1-3-a" title="Permalink to this headline">¶</a></h4>
+<p>This chapter aims to explain key concepts essential to the automated data collection process through eBay’s API.</p>
+<p><strong>1) Data Types:</strong></p>
+<p>Data types are an important aspect in programming that help determine the type of the object’s value. Some examples include numeric, alphanumeric, decimal values. Their differences lie in the types of operations the computer system can perform.</p>
+<p>There are a variety of data types. Generally, data types can be classified into two categories: <em>primitive/structure</em> and <em>composite</em>. Primitive data types are native to the processor; they have a one-to-one correspondence with objects in the computer’s memory (a common data type of this class is an integer – whole number). Composite data types are constructed in the program out of primitive data types and other aggregate data types. A dictionary is an example of this category.</p>
+<p>To avoid confusion, let us start by describing the main data types used in the eBay documentation and how these concepts might differ from ordinary use. For example, the use of float and decimal types in the world of programming and in eBay’s APIs may differ. Intuitively, we may think that a float is used as a decimal number in the calculator; however, an eBay decimal type contains different elements that are not necessarily numbers separated by decimal points. Therefore, as the meanings of data types can vary, we will explain them throughout this manual.</p>
+<p>In the following table presents eBay’s schema types with examples :</p>
+<p><em>Table 1.</em> Primitive Data Types</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data   Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>String</p></td>
+<td><p>contains one or   more characters, which can include numbers, letters, and other terms. The use   of quotes ‘’ or double “” ensures that the element can be recognized as a   string.</p></td>
+<td><p><code>Item_ID</code>           <code><CategoryParent>string </CategoryParent></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Boolean</p></td>
+<td><p>represents   binary-valued logic with values of true   or false. These can be   represented as 0 (for false) and 1(for true).</p></td>
+<td><p><code> {true, false}</code>           <code> {1, 0}</code></p></td>
+</tr>
+<tr class="row-even"><td><p>Int</p></td>
+<td><p>An integer is a   numeric value without a decimal point. Integers are whole numbers; they can   be positive, negative, or zero.</p></td>
+<td><p><code>-1, 0,   126789675, +100000</code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Float</p></td>
+<td><p>A number with a   decimal point using 32 bit data (whole numbers may omit the decimal point).   By using a float you can control where to locate the decimal point.</p></td>
+<td><p><code> 1E4, 1267.43233E12, 12.78e-2, 12 , -0, 0 </code>     <code>INF </code></p></td>
+</tr>
+<tr class="row-even"><td><p>Double</p></td>
+<td><p>A number with a   decimal point using 64 bit data. Double float number may  contain the digits 0-9, a hyphen to   designate negative numbers, and a period (“.”) as the decimal separator. A   common application is monetary values</p></td>
+<td><p><code>12678967.543233</code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Decimal</p></td>
+<td><p>In contrast to   float and double, which use rounding, decimal preserves all the digits.</p></td>
+<td><p><code>-1.23,+100000.00, 210.</code></p></td>
+</tr>
+<tr class="row-even"><td><p>dateTime</p></td>
+<td><p>It stores a   specific instant of time (start and end times). Its format is YYYY-MM-DD and   it records Universal Coordinated Time (UTC). Alternatively, it can represent   the official eBay time.</p></td>
+<td><p><code> 2022-01-10T12:00:00-05:00</code>           2022-01-10T17:00:00Z,   five hours later than 2022-01-10T12:00:00Z.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Duration</p></td>
+<td><p>It contains a   length of time and usually conveys the time left before a listing ends. Their   format is as follows:     P (period),     nY (number of   years).     nM (number of   months)     nD (number of   days),      T (date/time   separator),     nH (number of   hours),      nM (number of   minutes),     nS (the number   of seconds)</p></td>
+<td><p><code>PnYnMnDTnH nMnS</code>            (e.g., P2DT23H32M51S)      “ period of 2 days, 23   hours, 32 minutes, and 51 seconds”.</p></td>
+</tr>
+<tr class="row-even"><td><p>anyURI</p></td>
+<td><p>It identifies   web address or file location and specifies a Uniform Resource Identifier   (URI).</p></td>
+<td><p><code>web   page URL</code> (e.g., ViewItemURL)</p></td>
+</tr>
+</tbody>
+</table>
+<p>For explanatory purposes, the documentation of the different eBay APIs includes several composite data types. Here we will focus on the types most used in the shopping API.</p>
+<p><em>Table 2.</em> Composite Data Types:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Data Type</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Example</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Dictionary</p></td>
+<td><p>It is a collection of key values (unique identifier) that refer   to objects. Each key is associated with only one item, so it can be used to   find a particular set of data. Typically, keys are simple datatypes – usually   alphanumeric strings.            A dictionary data type can support operations, such as   retrieving, inserting, or updating values.</p></td>
+<td><p># empty dictionary     <code>my_dict = {}</code>                         # dictionary with integer keys     <code>my_dict = {1: ‘orange’, 2:   ‘ball’}</code>                 # dictionary with mixed keys     <code> my_dict = {‘name’: ‘Nick’, 1: [2, 4,   3]}</code>                             # using dict()     <code>my_dict =dict({1:’lemon’,   2:’rule’})</code>                           # from sequence having each item as a pair     <code>my_dict = dict([(1,’orange’),(2,’ball’)])</code></p></td>
+</tr>
+<tr class="row-odd"><td><p>token</p></td>
+<td><p>A token is an   abbreviation in which white spaces are removed.</p></td>
+<td><p><code><ShippingServiceName> token</ShippingServiceName></code></p></td>
+</tr>
+<tr class="row-even"><td><p>AmountType</p></td>
+<td><p>It is a double   type (64 bit) that specifies a monetary value – fees, prices, etc. - and   currency.</p></td>
+<td><p><code>&lt;Group1MaxFlatShippingCostcurrencyID=”CurrencyCodeType”&gt; AmountType (double)</Group1MaxFlatShippingCost></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>CountryCodeType</p></td>
+<td><p>It is a token   data type that contains two-letter country codes.</p></td>
+<td><p><code><DestinationPostalCode> string</DestinationPostalCode></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>2) Application Programming Interface (API):</strong></p>
+<p>API is the acronym for Application Programming Interface. APIs serve as intermediaries through an online connection or set of programming codes, for example: a server receives a data query, parses responses, and sends instructions between a data provider and an end-user.</p>
+<p>To make this term more familiar, imagine that you order some pizza to eat with your friends and watch the Super Bowl game. To process the order, the person in charge at the pizza joint must ask the kitchen to fix it and then hand it to delivery person to take it to you. That person is critical because he/she is the intermediary between you and the restaurant. He/she will make sure you can eat a delicious pizza, enjoy the game, and why not, watch your favorite team win the game. In this example, the “person in charge” is an intermediary and thus plays the role of  an API.</p>
+<p>To perform this intermediary role, APIs use standards, such as Hypertext Transfer Protocol (HTTP), and other Internet applications. APIs use different types of files to access information, such as XML and JSON format files. We will explain those file types in future sections.</p>
+<p><strong>3) Extensible Msrkup Languaje (XML):</strong></p>
+<p>XML stands for eXtensible Markup Language. We use it to store and transport data. XML facilitates communication between humans and machines. Due to its easy to read format is widely developed in APIs. This language uses a serialization process (translating a data type into a format that can be easily stored or transmitted over a computer network to be later reconstructed in a different environment). The versatility of this format is highly appealing in the API data collection.</p>
+<p><strong>4) JSON Format:</strong></p>
+<p>JSON is a text-based data format for storing and exchanging information.  JSON data is used to send HTTP requests between applications. They are structured as a collection of key-value pairs, in which the key must be a type string followed by one of the following data types: numbers, boolean, array, etc. (See description of data types)</p>
+<p>There are two valid types of JSON formats: a collection of key-value pairs enclosed by curly braces {}, or an ordered list of key-value pairs separated by commas and enclosed by a pair of square brackets []. See examples at this link:</p>
+<p><a href="https://developer.ebay.com/devzone/finding/CallRef/Samples/findItemsByCategory_basic_out_json.txt">JSON Format Samples</a></p>
+<p><strong>5) Simple Linux Utility for Resource Management (Slurm) <a name="https://www.rc.virginia.edu/userinfo/rivanna/slurm/"></a><a class="reference external" href="#cite_note-1"><sup>[1]</sup></a>:</strong></p>
+<p>Slurm Workload Manager is a free and open-resource job scheduler for Linux and Unix-Like kernels. Slurm allows users to prepare their computational workloads, or jobs, on allocated nodes to send them to a job controller. The controller oversees running on login nodes, scheduling, and monitoring the jobs in each period.</p>
+<p>Slurm makes it easy for users to perform jobs in an automated manner in a time frame without the need to be present to review the process. For example, we scheduled a job to acquire seniority data for this capstone project starting at midnight. This facilitated the data collection, given the company’s policy of restricting daily calls to the Shopping API to 5,000 calls.</p>
+<p><strong>6) SQL database:</strong></p>
+<p>Structured Query Language -SQL- is used to manage relational databases. A relational data model<a name="cite_ref-2"></a><a class="reference external" href="#cite_note-2"><sup>[2]</sup></a> involves the use of data tables that collect groups of elements into relations. Each table contains columns and rows with a primary key identifying each row. Columns are attributes of labeled elements. Rows represent single items that belong to a type of entity.  The organization of a relational database must provide derivability, redundancy, and consistency in the data. See <em>figure 1</em> below</p>
+<img src="fig1.jpg" width=400 height=400 /></div>
+<div class="section" id="what-kinds-of-data-a-class-anchor-id-section-1-4-a">
+<h4><strong>What Kinds of Data?</strong> <a class="anchor" id="section_1_4"></a><a class="headerlink" href="#what-kinds-of-data-a-class-anchor-id-section-1-4-a" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="a-dictionary-od-ebay-categories-a-class-anchor-id-section-1-4-1-a">
+<h5><strong>A dictionary od eBay Categories</strong> <a class="anchor" id="section_1_4_1"></a><a class="headerlink" href="#a-dictionary-od-ebay-categories-a-class-anchor-id-section-1-4-1-a" title="Permalink to this headline">¶</a></h5>
+<p>The following dictionary summarizes the listed categories of the eBay Shopping API<a name="cite_ref-3"></a><a class="reference external" href="#cite_note-3"><sup>[3]</sup></a> and the Finding API <a name="cite_ref-4"></a><a class="reference external" href="#cite_note-4"><sup>[4]</sup></a>
+.  Although most categories used here come from the Shopping API, some of those categories must be interpreted using the Finding API <a name="cite_ref-5"></a><a class="reference external" href="#cite_note-5"><sup>[5]</sup></a>.</p>
+<p>We have divided our dictionary into two parts: the first part presents the different features obtained from the application, and the second shows a visual display of how we organized the SQL schema.</p>
+<p>The first section uses a tabular data, or spreadsheet, to help users identify the type of data, its description, and the source of the data they are looking for. Note that eBay documentation provides a broad classification of schema types <a name="cite_ref-6"></a><a class="reference external" href="#cite_note-6"><sup>[6]</sup></a>- string, dateTime, integer, among others.</p>
+<p>As the following table shows, each feature corresponds to the type of data, its description, and source:</p>
+<p><em>Table 3.</em></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>API Source</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Item_ID</p></td>
+<td><p>ID that   uniquely recognizes the item listing. eBay generates this ID when an item is   listed. ID values are unique across all eBay listings. They are typically   9-12 digits in length.</p></td>
+<td><p>String</p></td>
+<td><p>Finding,   Shopping</p></td>
+</tr>
+<tr class="row-odd"><td><p>Product_Title</p></td>
+<td><p>Item name as   it appears in the listing title, or in the search and browse results.</p></td>
+<td><p>String</p></td>
+<td><p>Finding,   Shopping</p></td>
+</tr>
+<tr class="row-even"><td><p>CategoryID</p></td>
+<td><p>ID   that uniquely identifies the category associated with the item listing. If   the listing is nested in a sub-category, the CategoryID will be correlated to   that sub-category’s ID.</p></td>
+<td><p>String</p></td>
+<td><p>Shopping</p></td>
+</tr>
+<tr class="row-odd"><td><p>Price</p></td>
+<td><p>A listing’s   current price converted to US dollars.</p></td>
+<td><p>Integer</p></td>
+<td><p>Finding</p></td>
+</tr>
+<tr class="row-even"><td><p>Item_Condition</p></td>
+<td><p>A list   showing the name and unique ID of the item’s condition.</p></td>
+<td><p>String (List)</p></td>
+<td><p>Finding</p></td>
+</tr>
+<tr class="row-odd"><td><p>Listing_Time</p></td>
+<td><p>Time stamp   eBay records when the listing is made available. This value is returned in   GMT, the ISO 8601 date, and time format (YYYY-MM-DDTHH:MM:SS.SSSZ).</p></td>
+<td><p>dateTime</p></td>
+<td><p>Finding</p></td>
+</tr>
+<tr class="row-even"><td><p>Item_Specifics</p></td>
+<td><p>Item   specifics key-value pairs - if they exist - for a listing. This varies   depending on the listing and listing category.</p></td>
+<td><p>Dictionary</p></td>
+<td><p>Shopping</p></td>
+</tr>
+<tr class="row-odd"><td><p>Seller_ID</p></td>
+<td><p>Encrypted   ID that identifies unique sellers. Encoded with a hash code.</p></td>
+<td><p>String</p></td>
+<td><p>Shopping</p></td>
+</tr>
+<tr class="row-even"><td><p>Country</p></td>
+<td><p>Two-letter   ISO 3166 country code to indicate the country where the item is located   (e.g., “US” for the United States or “GB” for the United Kingdom)</p></td>
+<td><p>String</p></td>
+<td><p>Finding</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Zip_Code</p></td>
+<td><p>The postal   code where the item is listed. Field is returned only if a postal code has   been specified by the seller and is anonymized when returned via the API.</p></td>
+<td><p>String</p></td>
+<td><p>Finding</p></td>
+</tr>
+<tr class="row-odd"><td><p>Image_url</p></td>
+<td><p>The URL of a   specific listing on eBay. The returned URL is optimized to support search and   to make items easier to find via internet search engines.</p></td>
+<td><p>String (URL)</p></td>
+<td><p>Finding</p></td>
+</tr>
+<tr class="row-even"><td><p>SKU</p></td>
+<td><p>Unique SKU   (Stock Keeping Unit), which is an identifier for items for sale . This   identifier is for the object, not the listing.</p></td>
+<td><p>String</p></td>
+<td><p>Shopping</p></td>
+</tr>
+</tbody>
+</table>
+<p>The visual representation below is done by means of a conceptual Entity Relationship (ER) diagram <a name="cite_ref-7"></a><a class="reference external" href="#cite_note-7"><sup>[7]</sup></a>of the SQL database. This format allows us to observe how data is interrelated by primary keys, which are connected to different information columns.</p>
+<p>The organization of a relational database must provide derivability, redundancy, and consistency in the data. To illustrate this, the visualization displays primary keys, such as product title (see figure 2), to avoid repetition of data groups and non-recurring lists. As an example, Figure 2 presents a primary item ID that has 5 columns with related data - product title, Price, listing time, item condition, item specific, item specific, etc.</p>
+<p><em>Figure 2</em></p>
+<img src="fig2.jpg" width=600 height=800 />
+<p>Finally, the relational database can be updated as more data is collected, as long as the above criteria is met.</p>
+</div>
+</div>
+</div>
+<div class="section" id="getting-started-with-ebay-s-apis-a-class-anchor-id-chapter2-a">
+<h3>Getting Started with eBay’s APIs <a class="anchor" id="chapter2"></a><a class="headerlink" href="#getting-started-with-ebay-s-apis-a-class-anchor-id-chapter2-a" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="documentation-of-ebay-s-apis-a-class-anchor-id-section-2-1-a">
+<h4>Documentation of eBay’s APIs <a class="anchor" id="section_2_1"></a><a class="headerlink" href="#documentation-of-ebay-s-apis-a-class-anchor-id-section-2-1-a" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-2-2-a">
+<h4>Understanding the different types of eBay’s APIs <a class="anchor" id="section_2_2"></a><a class="headerlink" href="#understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-2-2-a" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="finding-api-and-shopping-api-a-class-anchor-id-section-2-2-1-a">
+<h5>Finding API and Shopping API <a class="anchor" id="section_2_2_1"></a><a class="headerlink" href="#finding-api-and-shopping-api-a-class-anchor-id-section-2-2-1-a" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="categories-a-class-anchor-id-section-2-2-2-a">
+<h5>Categories <a class="anchor" id="section_2_2_2"></a><a class="headerlink" href="#categories-a-class-anchor-id-section-2-2-2-a" title="Permalink to this headline">¶</a></h5>
+</div>
+</div>
+<div class="section" id="ebays-third-party-personal-deletion-policy-a-class-anchor-id-section-2-3-a">
+<h4>eBay’s Third-Party Personal Deletion Policy  <a class="anchor" id="section_2_3"></a><a class="headerlink" href="#ebays-third-party-personal-deletion-policy-a-class-anchor-id-section-2-3-a" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="understanding-the-term-personal-data-a-class-anchor-id-section-2-3-1-a">
+<h5>Understanding the term “Personal data” <a class="anchor" id="section_2_3_1"></a><a class="headerlink" href="#understanding-the-term-personal-data-a-class-anchor-id-section-2-3-1-a" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="personal-data-under-federal-regulations-a-class-anchor-id-section-2-3-2-a">
+<h5>Personal Data under Federal Regulations <a class="anchor" id="section_2_3_2"></a><a class="headerlink" href="#personal-data-under-federal-regulations-a-class-anchor-id-section-2-3-2-a" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="californias-personal-data-laws-a-class-anchor-id-section-2-3-3-a">
+<h5>California’s Personal Data Laws <a class="anchor" id="section_2_3_3"></a><a class="headerlink" href="#californias-personal-data-laws-a-class-anchor-id-section-2-3-3-a" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="ethical-implications-a-class-anchor-id-section-2-3-4-a">
+<h5>Ethical Implications <a class="anchor" id="section_2_3_4"></a><a class="headerlink" href="#ethical-implications-a-class-anchor-id-section-2-3-4-a" title="Permalink to this headline">¶</a></h5>
+</div>
+</div>
+</div>
+<div class="section" id="getting-data-from-ebay-a-class-anchor-id-chapter3-a">
+<h3>Getting Data from eBay  <a class="anchor" id="chapter3"></a><a class="headerlink" href="#getting-data-from-ebay-a-class-anchor-id-chapter3-a" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="introduction-to-the-ebay-data-pipeline-a-class-anchor-id-section-3-1-a">
+<h4>Introduction to the eBay Data Pipeline <a class="anchor" id="section_3_1"></a><a class="headerlink" href="#introduction-to-the-ebay-data-pipeline-a-class-anchor-id-section-3-1-a" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-3-2-a">
+<h5>Understanding the different types of eBay’s APIs <a class="anchor" id="section_3_2"></a><a class="headerlink" href="#understanding-the-different-types-of-ebay-s-apis-a-class-anchor-id-section-3-2-a" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="flask-app-a-class-anchor-id-section-3-2-1-a">
+<h5>Flask App <a class="anchor" id="section_3_2_1"></a><a class="headerlink" href="#flask-app-a-class-anchor-id-section-3-2-1-a" title="Permalink to this headline">¶</a></h5>
+</div>
+</div>
+<div class="section" id="navigating-through-the-code-a-class-anchor-id-section-3-2-a">
+<h4>Navigating through the Code <a class="anchor" id="section_3_2"></a><a class="headerlink" href="#navigating-through-the-code-a-class-anchor-id-section-3-2-a" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="slurm-file-a-class-anchor-id-section-3-3-a">
+<h4>Slurm File <a class="anchor" id="section_3_3"></a><a class="headerlink" href="#slurm-file-a-class-anchor-id-section-3-3-a" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="markdown-notebooks.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Notebooks with MyST Markdown</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="2_chapter.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Getting Started with eBay’s APIs</strong> <a class="anchor" id="chapter2"></a></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Elizabeth Lee, Nicholas Landi, Felipe Barraza, Karolina Naranjo-Velasco<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
